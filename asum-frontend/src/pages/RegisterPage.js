@@ -1,12 +1,14 @@
 import React from 'react';
-import RegisterFormContainer from '../containers/auth/RegisterFormContainer';
+import RegisterForm from '../components/auth/RegisterForm';
 import HeaderContainer from '../containers/common/HeaderContainer';
 
 const RegisterPage = () => {
     return (
         <>
         <HeaderContainer />
-        <RegisterFormContainer />
+        <RegisterForm>
+            
+        </RegisterForm>
         
         </>
     );

@@ -6,50 +6,22 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import CardContent from '@material-ui/core/CardContent';
-import StarRateRoundedIcon from '@material-ui/icons/StarRateRounded';
-import Favorite from './Favorite'
-
-
 
 const TourList = makeStyles((theme) => ({
   cardGrid: {
-    paddingTop: theme.spacing(1),
+    paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
   card: {
-    height: '94.5%',
+    height: '95%',
     display: 'flex',
     flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '80%', // 16:9
+    paddingTop: '70%', // 16:9
   },
   cardContent: {
     flexGrow: 1,
-  },
-  tourHead: {
-    fontWeight: 'bold',
-    fontSize: '0.95rem',
-  },
-  rating: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: '-3%',
-    color: '#868e96',
-    fontSize: '0.85rem'
-  },
-  tourPrice: {
-    fontWeight: 'bold',
-    fontSize: '0.95rem',
-    color: '#495057',
-  },
-  favorite: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: '-10%',
-    justifyContent: 'space-between'
   }
 }));
 
@@ -63,7 +35,7 @@ export default function Album() {
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
-          <Grid container spacing={2}>
+          <Grid container spacing={3}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card className={classes.card}>
@@ -73,22 +45,12 @@ export default function Album() {
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="caption" style={{ color: "#868e96" }}>
-                      #태그 #태그 #태그
+                    <Typography>
+                    [제주/시내] 동문시장 투어+제주 전통 음식 쿠킹클래스
                     </Typography>
-                    <Typography gutterBottom  className={classes.tourHead}>
-                      [제주/시내] 동문시장 투어+제주 전통 음식 쿠킹클래스
+                    <Typography>
+                    [제주/시내] 동문시장 투어+제주 전통 음식 쿠킹클래스
                     </Typography>
-                    <div className={classes.rating}>
-                    <StarRateRoundedIcon style={{ color: "#3bc9db" }}/>
-                    <div >0(0)</div>
-                    </div>
-                    <div className={classes.favorite}>
-                      <Typography className={classes.tourPrice}>
-                        58,000원
-                      </Typography>
-                      <Favorite />
-                    </div>
                   </CardContent>
                 </Card>
               </Grid>

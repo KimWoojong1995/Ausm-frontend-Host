@@ -1,15 +1,15 @@
 import React from 'react';
 import HeaderContainer from '../../containers/common/HeaderContainer';
-import HostForm from '../../components/common/host/HostForm';
+import HostTemplate from '../../components/common/host/HostTemplate';
 import HostInquiry from '../../components/host/HostInquiry';
 
 function HostInquiryPage() {
     return (
         <>
         <HeaderContainer />
-        <HostForm>
+        <HostTemplate>
             <HostInquiry />
-        </HostForm>
+        </HostTemplate>
         </>
     )
 }

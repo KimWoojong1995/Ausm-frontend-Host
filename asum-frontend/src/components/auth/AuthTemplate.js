@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
-
+import { Link } from 'react-router-dom';
 
 /**
  * 회원가입/로그인 페이지의 레이아웃을 담당하는 컴포넌트입니다.
@@ -18,7 +18,6 @@ import palette from '../../lib/styles/palette';
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5rem;
  `;
 
  /* 흰색 박스 */
@@ -46,7 +45,7 @@ import palette from '../../lib/styles/palette';
         <AuthTemplateBlock>
             <WhiteBox>
                 <div className="logo-area">
-                    ASUM
+                    <Link to="/">ASUM</Link>
                 </div>
                 {children}
             </WhiteBox>           

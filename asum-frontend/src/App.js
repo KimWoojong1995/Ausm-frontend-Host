@@ -6,12 +6,14 @@ import RegisterPage from './pages/RegisterPage';
 import RegisterSelectPage from './pages/RegisterSelectPage'
 import WritePage from './pages/WritePage';
 import PostPage from './pages/PostPage';
-import HostRegisterPage from './pages/host/HostRegisterPage';
+
+import HostApplyPage from './pages/host/HostApplyPage';
+import HostAccountPage from './pages/host/HostAccountPage';
+import HostProductPage from './pages/host/HostProductPage';
+import HostSalesPage from './pages/host/HostSalesPage';
+import HostInquiryPage from './pages/host/HostInquiryPage';
 import { Helmet } from 'react-helmet-async';
-import TpTestPage from './pages/TpTestPage';
-import CompoTestPage from './pages/CompoTestPage';
-import UiTestPage from './pages/UiTestPage';
-import LandingListPage from './pages/LandingListPage';
+import LandingPage from './pages/LandingPage';
 
 const App = () => {
   return (
@@ -19,17 +21,19 @@ const App = () => {
       <Helmet>
         <title>ASUM</title>
       </Helmet>
-      <Route component={LandingListPage} path={['/@:username', '/']} exact />
-      <Route component={LoginPage} path="/auth/login" />
+      <Route component={LandingPage} path={['/@:username', '/']} exact />
+      <Route component={LoginPage} path="/login" />
       <Route component={PostListPage} path="/postlist" />
       <Route component={RegisterPage} path="/register" />
       <Route component={RegisterSelectPage} path="/registerSelect" />
       <Route component={WritePage} path="/write" />
       <Route component={PostPage} path="/@:username/:postId" />
-      <Route component={TpTestPage} path="/tptest" />
-      <Route component={CompoTestPage} path="/compotest" />
-      <Route component={UiTestPage} path="/uitest" />
-      <Route component={HostRegisterPage} path="/hostregister" />
+
+      <Route component={HostApplyPage} path="/host/apply" exact />
+      <Route component={HostAccountPage} path="/host/account" />
+      <Route component={HostProductPage} path="/host/product" />
+      <Route component={HostSalesPage} path="/host/sales" />
+      <Route component={HostInquiryPage} path="/host/inquiry" />
     </>
   );
 };

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeField, initializeForm, register } from '../../modules/auth';
-import RegisterForm from '../../components/auth/RegisterForm';
+import AuthForm from '../../components/auth/AuthForm';
 import { check } from '../../modules/user';
 import { withRouter } from 'react-router-dom';
 
-const RegisterFormContainer = ({ history }) => {
+const RegisterForm = ({ history }) => {
     const [error, setError] = useState(null);
     const dispatch = useDispatch();
     const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
@@ -29,10 +29,9 @@ const RegisterFormContainer = ({ history }) => {
     // 폼 등록 이벤트 핸들러
     const onSubmit = e => {
         e.preventDefault();
-        console.log('환장하네');
-        const { username, email, password, passwordConfirm, age, gender } = form;
-        // 해당 인풋이 비어 있다면
-        if ([username, email, password, passwordConfirm].includes('')) {
+        const { username, password, passwordConfirm } = form;
+        // 하나라도 비어 있다면
+        if ([username, password, passwordConfirm].includes('')) {
             setError('빈 칸을 모두 입력하세요.');
             return;
         }
@@ -43,7 +42,7 @@ const RegisterFormContainer = ({ history }) => {
             dispatch(changeField({ form: 'register', key: 'passwordConfirm', value: ''}));
             return;
         }
-        dispatch(register({ username, email, password, age, gender }));
+        dispatch(register({ username, password }));
     };
 
     // 컴포넌트가 처음 렌더링될 때 form을 초기화함
@@ -83,7 +82,7 @@ const RegisterFormContainer = ({ history }) => {
     }, [history, user]); 
 
     return (
-        <RegisterForm
+        <AuthForm
             type="register"
             form={form}
             onChange={onChange}
@@ -93,4 +92,4 @@ const RegisterFormContainer = ({ history }) => {
     );
 };
 
-export default withRouter(RegisterFormContainer);
+export default withRouter(RegisterForm);

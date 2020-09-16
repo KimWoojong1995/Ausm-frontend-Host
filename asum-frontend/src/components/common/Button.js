@@ -5,7 +5,7 @@ import palette from '../../lib/styles/palette';
 
 const buttonStyle = css`
     border: 1px solid ${palette.gray[6]};
-    border-radius: 4px;
+    
     font-size: 0.85rem;
     font-weight: bold;
     padding: 0.37rem 1rem;
@@ -36,7 +36,7 @@ const buttonStyle = css`
             &:hover {
                 background: ${palette.blue[3]};
             }
-            
+            font-weight: 900;
 
     `}
 
@@ -46,12 +46,11 @@ const buttonStyle = css`
             border: none;
             background: ${palette.yellow[5]};
             color: black;
-            font-size: 0.95rem;
-            height: 51px;
+            font-size: 1rem;
             &:hover {
                 background: ${palette.yellow[2]};
                 color: black;
-                font-size: 0.95rem;
+                font-size: 1rem;
                 border: none;
             }
             
@@ -60,7 +59,6 @@ const buttonStyle = css`
     ${props =>
     props.cyan &&
     css`
-        font-weight: 700;
         border: none;
         color: white;
         background: ${palette.cyan[4]};
