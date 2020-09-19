@@ -9,9 +9,11 @@ import PostPage from './pages/PostPage';
 
 import HostApplyPage from './pages/host/HostApplyPage';
 import HostAccountPage from './pages/host/HostAccountPage';
-import HostProductPage from './pages/host/HostProductPage';
+import HostToursPage from './pages/host/HostToursPage';
 import HostSalesPage from './pages/host/HostSalesPage';
 import HostInquiryPage from './pages/host/HostInquiryPage';
+import HostToursCreatePage from './pages/host/HostToursCreatePage';
+
 import { Helmet } from 'react-helmet-async';
 import LandingPage from './pages/LandingPage';
 
@@ -29,11 +31,12 @@ const App = () => {
       <Route component={WritePage} path="/write" />
       <Route component={PostPage} path="/@:username/:postId" />
 
-      <Route component={HostApplyPage} path="/host/apply" exact />
+      <Route component={HostApplyPage} path="/host/apply" />
       <Route component={HostAccountPage} path="/host/account" />
-      <Route component={HostProductPage} path="/host/product" />
+      <Route component={HostToursPage} path="/host/tours" exact/>
       <Route component={HostSalesPage} path="/host/sales" />
       <Route component={HostInquiryPage} path="/host/inquiry" />
+      <Route component={HostToursCreatePage} path="/host/tours/create" />
     </>
   );
 };

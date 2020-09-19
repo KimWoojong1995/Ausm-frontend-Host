@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import styled from 'styled-components';
-import { Row, Col, Input, Radio, Form, Checkbox } from 'antd';
+import { Row, Col, Input, Radio, Form, Checkbox, Typography } from 'antd';
 import Button from '../common/Button';
 import 'antd/dist/antd.css';
 
@@ -34,7 +34,8 @@ const textMap = {
     apply: '작성 완료',
 };
 
-const HostApplyForm = ({type, form, onChange, onChangeImage, onChecked, onSubmit}) => {
+const HostApplyForm = ({type, form, onChange, onChangeImage, onChecked, onSubmit ,
+    uploadBusinessImage, businessSuccess, uploadBankImage, bankSuccess}) => {
     const text = textMap[type];
     const imageInput = useRef();//이미지 업로드를 위한 설정
     const onClickImageUpload = useCallback((e) => { //이미지 업로드 버튼
@@ -104,16 +105,17 @@ const HostApplyForm = ({type, form, onChange, onChangeImage, onChecked, onSubmit
                     <Radio value={'기업'}>기업</Radio>
                 </Radio.Group>
                 </Col>
-                <input type="file" hidden ref={businesslicenseRef} name="business_license" onChange={onChangeImage} />
-                <Col md={6} offset={1}>
+                <input type="file" hidden ref={businesslicenseRef} name="business_license" onChange={uploadBusinessImage} />
+                <Col md={7} offset={1}>
                     <ButtonWrapper cyan onClick={onClickBusinessLicense} >사업자등록증 사본</ButtonWrapper>
+                    {businessSuccess && <Typography.Text type="success" strong={true}> {businessSuccess}</Typography.Text>}
                 </Col>
-                <input type="file" hidden ref={bankAccountRef} name="bank_account" onChange={onChangeImage} />
-                <Col md={5} offset={1}>
-                    <ButtonWrapper cyan onClick={onClickBankAccount} >통장 사본</ButtonWrapper>
+                <input type="file" hidden ref={bankAccountRef} name="bank_account" onChange={uploadBankImage} />
+                <Col md={5}>
+                    <ButtonWrapper cyan onClick={onClickBankAccount}>통장 사본</ButtonWrapper>
+                    {bankSuccess && <Typography.Text type="success" strong={true}> {bankSuccess}</Typography.Text>}
                 </Col>
             </RowWrapper>
-
             <RowWrapper>
                 <Col md={3}><label>소개</label></Col>
                 <Col md={20} offset={1}>

@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import styled from 'styled-components';
-import { Row, Col, Input, Radio, Form, Checkbox } from 'antd';
+import { Row, Col, Input, Radio, Form, Checkbox, Typography } from 'antd';
 import Button from '../common/Button';
 import 'antd/dist/antd.css';
 
@@ -11,7 +11,7 @@ const Content = styled.div`
     height: 100%;
 `;
 
-const HostApllyBlock = styled(Form)`
+const HostAccountBlock = styled(Form)`
     font-size: 1rem;
     padding: 4%;
 `;
@@ -34,7 +34,8 @@ const textMap = {
     apply: '작성 완료',
 };
 
-const HostAccountForm = ({type, form, onChange, onChangeImage, onChecked, onSubmit}) => {
+const HostAccountForm = ({type, form, onChange, onChangeImage, onChecked, onSubmit ,
+    uploadBusinessImage, businessSuccess, uploadBankImage, bankSuccess}) => {
     const text = textMap[type];
     const imageInput = useRef();//이미지 업로드를 위한 설정
     const onClickImageUpload = useCallback((e) => { //이미지 업로드 버튼
@@ -57,7 +58,7 @@ const HostAccountForm = ({type, form, onChange, onChangeImage, onChecked, onSubm
     return (
         
         <Content>
-        <HostApllyBlock encType="multipart/form-data" onFinish={onSubmit} >
+        <HostAccountBlock encType="multipart/form-data" onFinish={onSubmit} >
             <RowFirst>
                 <Col style={{ marginTop: '6%' }} md={2}><label>사진</label></Col>
                 <Col md={6} offset={2}>
@@ -104,13 +105,15 @@ const HostAccountForm = ({type, form, onChange, onChangeImage, onChecked, onSubm
                     <Radio value={'기업'}>기업</Radio>
                 </Radio.Group>
                 </Col>
-                <input type="file" hidden ref={businesslicenseRef} name="business_license" onChange={onChangeImage} />
-                <Col md={6} offset={1}>
+                <input type="file" hidden ref={businesslicenseRef} name="business_license" onChange={uploadBusinessImage} />
+                <Col md={7} offset={1}>
                     <ButtonWrapper cyan onClick={onClickBusinessLicense} >사업자등록증 사본</ButtonWrapper>
+                    {businessSuccess && <Typography.Text type="success" strong={true}> {businessSuccess}</Typography.Text>}
                 </Col>
-                <input type="file" hidden ref={bankAccountRef} name="bank_account" onChange={onChangeImage} />
-                <Col md={5} offset={1}>
+                <input type="file" hidden ref={bankAccountRef} name="bank_account" onChange={uploadBankImage} />
+                <Col md={5}>
                     <ButtonWrapper cyan onClick={onClickBankAccount} >통장 사본</ButtonWrapper>
+                    {bankSuccess && <Typography.Text type="success" strong={true}> {bankSuccess}</Typography.Text>}
                 </Col>
             </RowWrapper>
 
@@ -145,7 +148,7 @@ const HostAccountForm = ({type, form, onChange, onChangeImage, onChecked, onSubm
             <ButtonWrapper cyan htmlType="submit">{text}</ButtonWrapper>
             </Col>
             </RowWrapper>
-        </HostApllyBlock>
+        </HostAccountBlock>
         </Content>
     )
 }

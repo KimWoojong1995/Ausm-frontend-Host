@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import HostAccountForm from '../../components/host/HostAccountForm';
 import { changeField, initializeForm, account } from '../../modules/host/host';
 
 
 const HostAccountContainer = () => {
+    const [businessSuccess, setBusinessSuccess] = useState(null);
+    const [bankSuccess, setBankSuccess] = useState(null);
+
     const dispatch = useDispatch();
     const { form, host, hostError } = useSelector(({ host }) => ({
-        form: host.apply,
+        form: host.account,
         host: host.host,
         hostError: host.hostError
     }));
@@ -37,6 +40,38 @@ const HostAccountContainer = () => {
         )
     };
 
+    const uploadBusinessImage = e => {
+        if (e.target !== null) {
+            setBusinessSuccess('등록 완료');
+        }
+        const value = e.target.files[0];
+        const name = e.target.name;
+        console.log(value, name);
+        dispatch(
+            changeField({
+                form: 'apply',
+                key: name,
+                value
+            })
+        )
+    }
+
+    const uploadBankImage = e => {
+        if (e.target !== null) {
+            setBankSuccess('등록 완료');
+        }
+        const value = e.target.files[0];
+        const name = e.target.name;
+        console.log(value, name);
+        dispatch(
+            changeField({
+                form: 'apply',
+                key: name,
+                value
+            })
+        )
+    }
+
     const onChecked = e => {
         const { checked, name } = e.target;
         console.log(checked, name);
@@ -50,7 +85,6 @@ const HostAccountContainer = () => {
     };
 
     const onSubmit = e => { //form 보내기 함수
-        // e.preventDefault();
         const { host_image, host_name, host_phone_nubmer, business_type, business_license,
             bank_account, about, contract, personal_information } = form;
 
@@ -61,7 +95,7 @@ const HostAccountContainer = () => {
             } else if (host_image === null) {
                 alert('사진 업로드가 필요합니다.')
             } else {console.log(e,'전송완료')};
-                
+
             dispatch(account({ host_image, host_name, host_phone_nubmer, business_type, business_license,
                 bank_account, about, contract, personal_information }));
     };
@@ -94,6 +128,10 @@ const HostAccountContainer = () => {
             onChangeImage={onChangeImage}
             onChecked={onChecked}
             onSubmit={onSubmit}
+            uploadBusinessImage={uploadBusinessImage}
+            businessSuccess={businessSuccess}
+            uploadBankImage={uploadBankImage}
+            bankSuccess={bankSuccess}
         />
         </>
     )

@@ -4,7 +4,7 @@ import HostTemplate from '../../components/common/host/HostTemplate';
 import HostApplyContainer from '../../containers/host/HostApplyContainer';
 
 
-function HostRegisterPage() {
+const HostRegisterPage = () => {
     return (
     <>
     <HeaderContainer />

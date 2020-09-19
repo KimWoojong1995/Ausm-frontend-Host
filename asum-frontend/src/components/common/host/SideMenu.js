@@ -37,7 +37,7 @@ const SideMenu = () => {
                 ) : (
                     <div>
                     <div className="side__menu">
-                        <Link to="/host/product">상품 관리</Link>
+                        <Link to="/host/tours">상품 관리</Link>
                     </div>
                     <div className="side__menu">
                         <Link to="/host/sales">판매 관리</Link>

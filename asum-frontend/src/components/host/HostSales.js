@@ -141,7 +141,7 @@ const HostSales = () => {
       
       function onChange(pagination, filters, sorter, extra) {
         console.log('params', pagination, filters, sorter, extra);
-      }
+      } //왜 위아래 펑션이 같은 이름임? 이름 따로해야함
 
 
       const onChanges = useCallback((e) => {

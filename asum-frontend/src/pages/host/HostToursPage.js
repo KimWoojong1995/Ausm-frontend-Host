@@ -1,17 +1,17 @@
 import React from 'react';
 import HeaderContainer from '../../containers/common/HeaderContainer';
 import HostTemplate from '../../components/common/host/HostTemplate';
-import HostProduct from '../../components/host/HostProduct';
+import HostToursContainer from '../../containers/host/HostToursContainer';
 
-function HostProductPage() {
+const HostToursPage = () => {
     return (
         <>
         <HeaderContainer />
         <HostTemplate>
-            <HostProduct />
+            <HostToursContainer />
         </HostTemplate>
         </>
     )
 }
 
-export default HostProductPage;
+export default HostToursPage;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import HostApplyForm from '../../components/host/HostApplyForm';
 import { changeField, initializeForm, apply } from '../../modules/host/host';
@@ -6,6 +6,9 @@ import { changeField, initializeForm, apply } from '../../modules/host/host';
 
 
 const HostRegisterContainer = () => {
+    const [businessSuccess, setBusinessSuccess] = useState(null);
+    const [bankSuccess, setBankSuccess] = useState(null);
+
     const dispatch = useDispatch();
     const { form, host, hostError } = useSelector(({ host }) => ({
         form: host.apply,
@@ -37,6 +40,38 @@ const HostRegisterContainer = () => {
             })
         )
     };
+
+    const uploadBusinessImage = e => {
+        if (e.target !== null) {
+            setBusinessSuccess('등록 완료');
+        }
+        const value = e.target.files[0];
+        const name = e.target.name;
+        console.log(value, name);
+        dispatch(
+            changeField({
+                form: 'apply',
+                key: name,
+                value
+            })
+        )
+    }
+
+    const uploadBankImage = e => {
+        if (e.target !== null) {
+            setBankSuccess('등록 완료');
+        }
+        const value = e.target.files[0];
+        const name = e.target.name;
+        console.log(value, name);
+        dispatch(
+            changeField({
+                form: 'apply',
+                key: name,
+                value
+            })
+        )
+    }
 
     const onChecked = e => {
         const { checked, name } = e.target;
@@ -95,6 +130,10 @@ const HostRegisterContainer = () => {
             onChangeImage={onChangeImage}
             onChecked={onChecked}
             onSubmit={onSubmit}
+            uploadBusinessImage={uploadBusinessImage}
+            businessSuccess={businessSuccess}
+            uploadBankImage={uploadBankImage}
+            bankSuccess={bankSuccess}
         />
         </>
     )

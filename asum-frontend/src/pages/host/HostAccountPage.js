@@ -4,7 +4,7 @@ import HostTemplate from '../../components/common/host/HostTemplate';
 import HostAccountContainer from '../../containers/host/HostAccountContainer';
 
 
-function HostAccountPage() {
+const HostAccountPage = () => {
     return (
     <>
     <HeaderContainer />

@@ -35,7 +35,7 @@ export const apply = createAction(APPLY,
          }));
 
 export const account = createAction( ACCOUNT,
-    ({host_image, host_name, host_phone_number, business_type, business_license,
+    ({ host_image, host_name, host_phone_number, business_type, business_license,
         bank_account, about, contract, personal_information}) => ({
             host_image, host_name, host_phone_number, business_type, business_license,
             bank_account, about, contract, personal_information
